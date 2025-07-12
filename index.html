@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DevDaily - Daily Dev Quotes</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    /* Custom gradient colors */
+    body {
+      background: linear-gradient(to bottom, #000000, #b91c1c);
+    }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col justify-center items-center text-white px-4 text-center">
+
+  <h1 class="text-3xl font-bold mb-6">💻 DevDaily</h1>
+
+  <blockquote id="quote" class="text-xl italic max-w-xl mb-4">Loading quote...</blockquote>
+
+  <div class="space-x-4">
+    <button onclick="getQuote()" class="px-4 py-2 bg-red-700 bg-opacity-80 rounded-lg hover:bg-red-800 transition text-white">
+      New Quote
+    </button>
+    <button onclick="copyQuote()" class="px-4 py-2 bg-red-700 bg-opacity-80 rounded-lg hover:bg-red-800 transition text-white">
+      Copy
+    </button>
+  </div>
+
+  <script>
+    const quotes = [
+      { q: "Talk is cheap. Show me the code.", a: "Linus Torvalds" },
+      { q: "Programs must be written for people to read, and only incidentally for machines to execute.", a: "Harold Abelson" },
+      { q: "The best way to get a project done faster is to start sooner.", a: "Jim Highsmith" },
+      { q: "Simplicity is the soul of efficiency.", a: "Austin Freeman" },
+      { q: "Any fool can write code that a computer can understand. Good programmers write code that humans can understand.", a: "Martin Fowler" },
+      { q: "First, solve the problem. Then, write the code.", a: "John Johnson" },
+      { q: "Experience is the name everyone gives to their mistakes.", a: "Oscar Wilde" }
+    ];
+
+    function getQuote() {
+      const randomIndex = Math.floor(Math.random() * quotes.length);
+      const quote = quotes[randomIndex];
+      document.getElementById('quote').innerText = `"${quote.q}" — ${quote.a}`;
+    }
+
+    function copyQuote() {
+      const text = document.getElementById('quote').innerText;
+      navigator.clipboard.writeText(text).then(() => {
+        alert("✅ Quote copied to clipboard!");
+      });
+    }
+
+    getQuote();
+  </script>
+
+</body>
+</html>
